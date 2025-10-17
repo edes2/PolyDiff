@@ -1,0 +1,36 @@
+<app-sidenav> </app-sidenav>
+<main id="main" class="mat-app-background">
+    <mat-card id="nav-bar">
+        <button id="return-button" mat-raised-button color="primary" (click)="navigatePrevious()">Retour</button>
+        <button id="random-button" mat-raised-button color="primary" (click)="joinRandomRoom()" [disabled]="isEmpty">
+            Rejoindre une partie aléatoire
+        </button>
+    </mat-card>
+
+    <div id="message" class="text-content">
+        <p *ngIf="isEmpty" id="titre">Il n'y a aucune partie en cours. Veuillez en créer une nouvelle.</p>
+        <button *ngIf="isEmpty" id="return-button" mat-raised-button color="primary" (click)="redirectToCreateGame()">
+            Créer une nouvelle partie
+        </button>
+    </div>
+
+    <div *ngIf="isClassic">
+        <ul id="classic-card-list">
+            <li *ngFor="let waitingRoom of waitingRooms" class="game-card">
+                <app-join-room-card-classic
+                    *ngIf="waitingRoom.cardId"
+                    [cardId]="waitingRoom.cardId"
+                    [roomInfo]="waitingRoom"
+                ></app-join-room-card-classic>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="!isClassic">
+        <ul class="limited-card-list">
+            <li *ngFor="let waitingRoom of waitingRooms" class="game-card">
+                <app-join-room-card-limited [roomInfo]="waitingRoom"></app-join-room-card-limited>
+            </li>
+        </ul>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

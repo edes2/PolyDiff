@@ -1,0 +1,37 @@
+<div class="main">
+    <button id="quit-button" class="icon-button" type="button" (click)="exitPopup()" (keydown)="disableDefaultFocus($event)">x</button>
+
+    <div *ngFor="let setting of settings | async | keyvalue; index as i">
+        <h1>{{ setting.value.description }} :</h1>
+
+        <div class="setting-container">
+            <button class="icon-button" type="button" (click)="input.stepDown(); this.validity[i] = true;">-</button>
+            <div class="setting-input">
+                <input
+                    #input
+                    type="number"
+                    step="1"
+                    (input)="this.validity[i] = true"
+                    [ngClass]="this.validity[i] ? '' : 'invalid-setting'"
+                    [value]="setting.value.value"
+                    [(ngModel)]="setting.value.value"
+                    [min]="setting.value.minValue"
+                    [max]="setting.value.maxValue"
+                    [id]="setting.value.description"
+                />
+            </div>
+            <button class="icon-button" type="button" (click)="input.stepUp()">+</button>
+
+            <span class="setting-rule">
+                (Doit être entre
+                <span class="value" [ngClass]="this.validity[i] ? '' : 'warning'">{{ setting.value.minValue }}s</span>&nbsp;et
+                <span class="value" [ngClass]="this.validity[i] ? '' : 'warning'">{{ setting.value.maxValue }}s</span>)
+            </span>
+        </div>
+        <div class="warning">{{ this.validity[i] ? '' : 'La valeur est invalide' }}</div>
+    </div>
+    <div id="button-group">
+        <button class="button" type="button" mat-raised-button color="primary" (click)="modifyAll(false)">Appliquer les modifications</button>
+        <button class="button" type="button" mat-raised-button color="primary" (click)="modifyAll(true)">Appliquer les valeurs par défaut</button>
+    </div>
+</div>

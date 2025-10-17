@@ -1,0 +1,55 @@
+<div class="main">
+    <div id="image-area">
+        <img #differencesImage alt="Image des differences" [src]="imagePath" [ngClass]="!this.validDifferenceCount ? 'warning' : ''" />
+
+        <h3 *ngIf="!this.validDifferenceCount" id="warning-text" class="warning">
+            Pour que la partie soit valide, elle nécessite entre 3 et 9 différences. Veuillez la modifier.
+        </h3>
+    </div>
+
+    <div id="creation-info">
+        <div id="button-group">
+            <button class="button" mat-raised-button color="primary" (click)="exitPopup()" (keydown)="this.disableDefaultFocus($event)">
+                Modifier le jeu
+            </button>
+            <button
+                class="button"
+                mat-raised-button
+                color="accent"
+                [disabled]="!this.validDifferenceCount || this.buttonDisabled"
+                (click)="saveCard()"
+            >
+                Sauvegarder le jeu
+            </button>
+        </div>
+
+        <div>
+            <h1>Nom de la partie :</h1>
+            <div id="name-input" [ngClass]="!this.validDifferenceCount ? 'disabled' : ''">
+                <input
+                    type="text"
+                    maxlength="30"
+                    placeholder="Entrer le nom de la partie"
+                    [(ngModel)]="cardTitle"
+                    [disabled]="!this.validDifferenceCount"
+                    [ngClass]="this.message ? 'invalid-name' : ''"
+                    (input)="this.clearWarningMessage()"
+                    (keydown.enter)="this.saveCard()"
+                />
+            </div>
+            <div class="warning">{{ this.message }}</div>
+        </div>
+
+        <div>
+            <h1>Informations générales :</h1>
+            <p>
+                Niveau de difficulté :
+                <span [ngClass]="!this.validDifferenceCount ? 'warning' : ''">{{ this.difficulty }}</span>
+            </p>
+            <p>
+                Nombre de différences trouvées :
+                <span class="count">{{ this.differenceCount }}</span>
+            </p>
+        </div>
+    </div>
+</div>

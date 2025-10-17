@@ -1,0 +1,145 @@
+#main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-bar {
+    padding: 1.2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#title {
+    padding: 1.5%;
+    font-size: 2.5rem;
+    text-shadow: 5px 5px 10px #9c27b0;
+}
+
+.game-card {
+    margin-right: 30px;
+    margin-bottom: 10px;
+    padding: 15px 15px;
+    background-color: #5c5c5c;
+}
+
+#message {
+    font-size: 2.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.text-content {
+    color: #e096ec;
+    text-align: center;
+}
+
+.button {
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+    margin: 0px 5px;
+}
+
+#return-button {
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: #5c5c5c;
+    height: 86%;
+}
+
+.game-list {
+    width: 100%;
+}
+
+.game-card {
+    margin: 5px;
+}
+
+ul {
+    width: 100%;
+}
+
+mat-toolbar {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #5c5c5c;
+    height: 90px;
+    width: 100%;
+}
+
+.page-button-group {
+    z-index: 2;
+    position: relative;
+    right: -130px;
+    width: fit-content;
+}
+
+.page-button {
+    border: 0px;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #9c27b0;
+}
+
+.page-button:hover {
+    cursor: pointer;
+}
+
+::ng-deep .mat-icon-button {
+    border: 0px;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    background-color: #9c27b0;
+}
+
+button.current {
+    background-color: #4e1057;
+}
+
+::ng-deep .mat-paginator-range-label {
+    visibility: hidden;
+}
+
+::ng-deep .mat-paginator-range-actions {
+    z-index: 1;
+    margin: 0px 20px;
+    border-radius: 4px;
+    height: 50px;
+    width: fit-content;
+}
+
+::ng-deep .mat-paginator-outer-container {
+    background-color: #5c5c5c;
+}
+
+app-sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+app-chat-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+}

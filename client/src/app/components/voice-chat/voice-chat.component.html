@@ -1,0 +1,5 @@
+<div class="voice-chat-container">
+    <button (click)="voiceChatService.toggleMicrophone()" [ngClass]="getMicrophoneClass()">
+        <mat-icon>{{ getMicrophoneIcon() }}</mat-icon>
+    </button>
+</div>

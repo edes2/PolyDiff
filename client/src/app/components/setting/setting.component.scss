@@ -1,0 +1,119 @@
+.main {
+    width: 570px;
+    height: 400px;
+    padding: 15px 25px;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.value {
+    font-weight: bold;
+}
+
+.icon-button {
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border: 0px;
+    border-radius: 24px;
+    color: #ffffff;
+    background-color: #9c27b0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#quit-button {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    float: right;
+}
+
+#quit-button:hover {
+    background-color: #b60000;
+}
+
+.button {
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+    margin: 0px 5px;
+}
+
+#button-group {
+    margin-top: 30px;
+    float: right;
+}
+
+.button-apply {
+    height: 50px;
+    width: 270px;
+    border: 0px;
+    font-size: 1.2rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.setting-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    background-color: #9c27b0;
+    border: 3px solid #9c27b0;
+}
+
+.setting-input > input {
+    height: 38px;
+    width: 56px;
+    border: 0px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button,
+input[type='number'] {
+    -webkit-appearance: none;
+}
+
+.setting-input > input:focus {
+    outline: none;
+    background-color: #deb4e6;
+}
+
+.setting-input > input.invalid-setting {
+    background-color: #cf9191;
+}
+
+.setting-rule {
+    font-size: 1.1rem;
+}
+
+.warning {
+    color: #e46666;
+    font-weight: bold;
+}
+
+.setting-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto Slab&display=swap');
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    background-color: #303030;
+}
+
+.logo {
+    width: 70%;
+    height: auto;
+    margin-bottom: 5vh;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    align-items: center;
+    flex: 1;
+    height: 90vh;
+    width: max(25%, 400px);
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    padding: 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: purple;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #7b1fa2;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+input {
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.form-field {
+    display: flex;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    color: black;
+    width: 100%;
+    margin: 10px;
+}
+
+.form label,
+.form input {
+    padding: 1rem;
+}
+
+.form label {
+    padding-inline: 1.25rem;
+}
+
+.error-message {
+    box-sizing: border-box;
+    position: absolute;
+    top: -15%;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+    background-color: #ffcccc;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold;
+}
+
+#return-button {
+    font-size: large;
+    min-height: 50px;
+    min-width: 150px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}

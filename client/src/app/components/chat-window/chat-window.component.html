@@ -1,0 +1,53 @@
+<div #chatBubble id="chat-bubble" [class.open]="isChatBubbleOpen" [style.right.px]="rightPosition">
+    <div class="chat-container">
+        <div class="chat-header" (click)="openChatBubble()">
+            <div class="user-avatar">
+                <div class="user-status-info">
+                    <a>{{ this.channelId.startsWith('PrivateChat: ') ? 'Chat de partie' : this.channelId }}</a>
+                    <p *ngIf="this.channelId === 'General'">Chat global</p>
+                    <p *ngIf="this.channelId !== 'General'">{{ this.channelId.startsWith('PrivateChat: ') ? 'Chat privé' : 'Chat' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-body" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <div
+                *ngFor="let message of this.messages"
+                [ngClass]="{ message: true, self: isSelf(message.emitterId), other: !isSelf(message.emitterId) }"
+            >
+                <img *ngIf="!isSelf(message.emitterId)" [src]="avatarUrls[message.emitterId]" class="avatar" />
+                <div class="bubble" *ngIf="isPlainMessage(message)">
+                    <div class="name">{{ message.emitterName }}</div>
+                    {{ message.content }}
+                    <div class="timestamp">{{ getTimestamp(message) }}</div>
+                </div>
+                <img *ngIf="isGifMessage(message)" class="chat-gif" [src]="message.content" alt="GIF" loading="lazy" />
+                <img *ngIf="isImageMessage(message)" class="chat-image" [src]="message.content" alt="Image" loading="lazy" />
+                <img *ngIf="isSelf(message.emitterId)" [src]="avatarUrls[message.emitterId]" class="avatar" />
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <div class="chat-media">
+                <div class="gif-search">
+                    <button (click)="toggleGifPanel()">GIF</button>
+
+                    <ul class="gif-panel" *ngIf="isGifPanelOpen">
+                        <input
+                            id="gif-button"
+                            type="text"
+                            placeholder="Search GIFs"
+                            (input)="searchGifs(this.gifInputText)"
+                            [(ngModel)]="this.gifInputText"
+                        />
+                        <li *ngFor="let gif of gifSearchResults" (click)="sendGif(gif)">
+                            <img [src]="gif.images.preview_gif.url" [alt]="gif.title" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <input type="textarea" placeholder="Envoyer un message" [(ngModel)]="this.inputText" (keydown.enter)="sendButton()" />
+            <button (click)="sendButton()">Envoyer</button>
+        </div>
+    </div>
+</div>

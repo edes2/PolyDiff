@@ -1,0 +1,26 @@
+<app-sidenav [mode]="mode"> </app-sidenav>
+<main class="mat-app-background" [ngClass]="isDarkMode ? 'dark-mode' : 'light-mode'">
+    <mat-card class="nav-bar">
+        <div id="top">
+            <h1 id="title">Mode Zen</h1>
+            <div class="top-buttons">
+                <!-- Quit Button -->
+                <button mat-raised-button (click)="quitGame()">Quitter</button>
+            </div>
+        </div>
+    </mat-card>
+
+    <div id="game-area">
+        <div id="game-content">
+            <div id="game-canvas">
+                <div class="canvas">
+                    <app-play-area-zen #leftCanvas [isLeft]="true"> </app-play-area-zen>
+                </div>
+
+                <div class="canvas">
+                    <app-play-area-zen #rightCanvas [isLeft]="false"> </app-play-area-zen>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

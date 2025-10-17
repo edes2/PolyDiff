@@ -1,0 +1,236 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    // min-height: 100vh;
+    min-height: 100vh;
+    // height: 100vh;
+    // overflow: hidden; /* Disables scrolling */
+}
+
+#nav-bar {
+    padding: 1.2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#title {
+    font-size: 2.5rem;
+    text-shadow: 5px 5px 10px #9c27b0;
+    max-height: 100%;
+    padding-top: 0.7%;
+    padding-right: 0.7%;
+}
+.text-content {
+    color: #e096ec;
+    text-align: center;
+}
+
+#return-button {
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-image {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#submit-button {
+    width: 100%;
+}
+
+.win {
+    background-color: green;
+    color: white;
+}
+
+.lose {
+    background-color: red;
+    color: white;
+}
+
+.content-wrapper {
+    max-height: 100vh;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.profile-statistics-container {
+    min-height: 100%;
+    overflow-y: auto;
+    // padding-right: 8px;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    // border-radius: 8px;
+    // display: flex;
+    // flex-direction: column;
+}
+
+.top-container {
+    flex: 0 0 auto;
+    // padding: 10px;
+}
+
+.bottom-container .bottom-list {
+    max-height: 600px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.bottom-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.bottom-list::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #9c27b0;
+}
+
+/* Optional: Add this if you want to ensure the <h3> does not get cut off when scrolling */
+.bottom-container h3 {
+    margin-bottom: 10px; /* Or any other value that suits your layout */
+}
+
+.game-history-container {
+    min-height: 100%;
+    // padding-right: 8px;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    // border-radius: 8px;
+}
+
+.history-container {
+    max-height: 700px;
+    overflow-y: auto;
+    padding-right: 8px;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    // border-radius: 8px;
+}
+
+.history-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #9c27b0;
+}
+
+.form-container {
+    min-height: 100%;
+    // padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.username-wrapper,
+.email-wrapper,
+.avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+input[matInput] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+.avatar-image {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+button[mat-raised-button] {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[mat-raised-button]:hover {
+    background-color: #651473;
+}
+
+#submit-button {
+    align-self: flex-end;
+}
+
+.upload-sound-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #9c27b0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.upload-sound-btn:hover {
+    background-color: #651473;
+}
+
+.change-avatar-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #9c27b0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.change-avatar-btn:hover {
+    background-color: #651473;
+}
+
+.default-avatars {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.default-avatar-label {
+    cursor: pointer;
+}
+
+.avatar-option-image {
+    height: 70px;
+    width: 70px;
+}

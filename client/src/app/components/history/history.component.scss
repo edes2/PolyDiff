@@ -1,0 +1,83 @@
+#main {
+    height: 700px;
+    min-width: 1000px;
+    padding: 0px 20px;
+}
+
+p {
+    font-size: 1.41rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.button {
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+    margin: 0px 5px;
+}
+
+#quit-button {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    border: 0px;
+    border-radius: 24px;
+    color: #ffffff;
+    background-color: #9c27b0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#quit-button:hover {
+    background-color:#b60000;
+    cursor: pointer;
+}
+
+div.history-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 85%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 3px solid #69f0ae;
+    overflow-y: scroll;
+}
+
+.column-title {
+    margin: 10px 0px;
+    color: #69f0ae;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #69f0ae;
+}
+
+div.column {
+    padding: 0px 6px;
+}
+
+div.history-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+div.history-container::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #69f0ae;
+}
+
+.winner {
+    font-weight: bold;
+}
+
+.gave-up {
+    text-decoration: line-through;
+}

@@ -1,0 +1,106 @@
+<div>
+    <popout-window #popoutWindow1 [windowTop]="500" [windowLeft]="500" [windowHeight]="400" (closed)="this.isPoppedOut = false">
+        <div class="container" [class.open]="isChatManagerOpen">
+            <div id="chat-list" class="chat-list">
+                <div class="chat-header" (click)="openChatManager()">
+                    <div class="user-avatar">
+                        <div class="user-status-info">
+                            <a id="window-title">Canaux de discussion</a>
+                        </div>
+                    </div>
+                    <div *ngIf="this.isPoppedOut === false" class="popout-icon" (click)="popoutWindow1.popOut(); this.isPoppedOut = true">
+                        <img src="./assets/popout.png" height="25px" width="25px" alt="Popout" />
+                    </div>
+                    <div *ngIf="this.isPoppedOut === true" class="popout-icon" (click)="popoutWindow1.popIn(); this.isPoppedOut = false">
+                        <img src="./assets/popin.svg" height="25px" width="25px" alt="Popin" />
+                    </div>
+                </div>
+                <div class="header">
+                    <input
+                        type="text"
+                        [(ngModel)]="searchQuery"
+                        placeholder="Chercher un canal"
+                        class="search-input"
+                        (ngModelChange)="filterChats()"
+                    />
+                </div>
+                <div class="create-chat-container">
+                    <input type="text" [(ngModel)]="newChatName" placeholder="Nouveau Canal" class="new-chat-name-input" />
+                    <button class="new-chat-button" (click)="createChat()">Créer un canal</button>
+                    <div *ngIf="this.displayMessage" class="display-message">
+                        {{ this.displayMessage }}
+                    </div>
+                </div>
+                <ul class="chat-list-items">
+                    <li>
+                        <a>
+                            <div class="chat-item">
+                                <div class="chat-info">
+                                    <h3>General</h3>
+                                    <small> Chat general</small>
+                                </div>
+                                <div class="chat-buttons">
+                                    <button
+                                        *ngIf="chatService.joinedChannels && chatService.joinedChannels.includes('General')"
+                                        class="open-chat-button"
+                                        (click)="openCloseChat('General')"
+                                    >
+                                        {{ 'General' === this.chatService.openedChat ? 'Fermer' : 'Ouvrir' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li *ngIf="chatService.currentPrivateChat">
+                        <a>
+                            <div class="chat-item">
+                                <div class="chat-info">
+                                    <h3>Chat de partie</h3>
+                                    <small> Chat de partie</small>
+                                </div>
+                                <div class="chat-buttons">
+                                    <button class="open-chat-button" (click)="openCloseChat(chatService.currentPrivateChat)">
+                                        {{ chatService.currentPrivateChat === this.chatService.openedChat ? 'Fermer' : 'Ouvrir' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li *ngFor="let channel of chatService.filteredChats">
+                        <a>
+                            <div class="chat-item">
+                                <div class="chat-info">
+                                    <h3>{{ channel }}</h3>
+                                    <small> {{ channel !== 'General' ? 'Chat' : 'Chat général' }}</small>
+                                </div>
+                                <div class="chat-buttons">
+                                    <button
+                                        *ngIf="chatService.joinedChannels && chatService.joinedChannels.includes(channel)"
+                                        class="open-chat-button"
+                                        (click)="openCloseChat(channel)"
+                                    >
+                                        {{ channel === this.chatService.openedChat ? 'Fermer' : 'Ouvrir' }}
+                                    </button>
+                                    <button
+                                        *ngIf="chatService.joinedChannels && channel !== 'General' && !channel.startsWith('PrivateChat: ')"
+                                        [class]="chatService.joinedChannels.includes(channel) ? 'leave-chat-button' : 'join-chat-button'"
+                                        (click)="toggleChat(channel)"
+                                    >
+                                        {{ chatService.joinedChannels.includes(channel) ? 'Quitter' : 'Rejoindre' }}
+                                    </button>
+                                    <button *ngIf="channel !== 'General'" class="delete-chat-button" (click)="deleteChat(channel)">Supprimer</button>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="chat-window-container">
+            <!-- <app-chat-window class="chat-window" channelId="General"> </app-chat-window> -->
+            <!-- [rightPosition]="675" -->
+            <app-chat-window class="chat-window" *ngIf="this.chatService.openedChat" [channelId]="this.chatService.openedChat"> </app-chat-window>
+        </div>
+    </popout-window>
+</div>

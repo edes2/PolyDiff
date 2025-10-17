@@ -1,0 +1,18 @@
+<div class="main">
+    <p class="popup-title">Veuillez entrer votre nom d'utilisateur :</p>
+    <div>
+        <div id="username-input">
+            <input
+                #nameInput
+                type="text"
+                maxlength="20"
+                required
+                [ngClass]="this.message ? 'invalid-username' : ''"
+                (input)="this.clearWarningMessage()"
+            />
+            <button class="username-input-button" mat-raised-button color="primary" (click)="this.validate()">Valider</button>
+        </div>
+        <div id="invalid-username">{{ this.message }}</div>
+    </div>
+    <button id="return-button" mat-raised-button color="primary" routerLink="/home">Retour</button>
+</div>

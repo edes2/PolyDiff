@@ -1,0 +1,31 @@
+<app-sidenav> </app-sidenav>
+<main id="main" class="mat-app-background">
+    <mat-card id="nav-bar">
+        <button id="return-button" mat-raised-button color="primary" routerLink="/home">Retour</button>
+        <div id="title" class="text-content">Top 20</div>
+    </mat-card>
+    <div id="content" class="content-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Rang</th>
+                    <th>Avatar</th>
+                    <th>Joueur</th>
+                    <th>Victoires</th>
+                    <th>Défaites</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Use Angular *ngFor directive to loop through players data -->
+                <tr *ngFor="let user of users; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td><img src="{{ user.avatarUrl }}" alt="Avatar" style="width: 50px; height: 50px" /></td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.wins ?? 0 }}</td>
+                    <td>{{ user.losses ?? 0 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

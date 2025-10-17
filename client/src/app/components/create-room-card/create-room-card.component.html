@@ -1,0 +1,46 @@
+<div *ngIf="cardInfo" class="main">
+    <div class="title-container">
+        <mat-card-title class="title">{{ cardName }}</mat-card-title>
+    </div>
+
+    <div class="image-area">
+        <img #image mat-card-image [src]="" />
+        <div class="difficulty">
+            <p>Nombre de différences: {{ cardInfo.diffCount }}</p>
+            <p *ngIf="cardInfo.rating">Note : {{ cardInfo.rating | number: '1.1-1' }} ⭐️ ({{ cardInfo.numberOfRatings }} avis)</p>
+        </div>
+    </div>
+
+    <div class="classic">
+        <h1 class="scores-title">Meilleurs scores en solo :</h1>
+        <p *ngFor="let bestScoresSolo of cardInfo.bestScoresSolo; index as i">
+            <span *ngIf="bestScoresSolo.playerUsername.length < 10">
+                Top&nbsp;{{ i + 1 }}&nbsp;:&nbsp; {{ bestScoresSolo.playerUsername }}&nbsp;
+                {{ convertSecondsToTime(bestScoresSolo.value) }}
+            </span>
+            <span *ngIf="bestScoresSolo.playerUsername.length >= 10">
+                Top&nbsp;{{ i + 1 }}&nbsp;:&nbsp; {{ bestScoresSolo.playerUsername.substring(0, 10) }}... &nbsp;{{
+                    convertSecondsToTime(bestScoresSolo.value)
+                }}
+            </span>
+        </p>
+    </div>
+
+    <div class="limited-time">
+        <h1 class="scores-title">Meilleurs scores en 1v1 :</h1>
+        <p *ngFor="let bestScores1v1 of cardInfo.bestScores1v1; index as i">
+            <span *ngIf="bestScores1v1.playerUsername.length < 10">
+                Top&nbsp;{{ i + 1 }}&nbsp;:&nbsp; {{ bestScores1v1.playerUsername }}&nbsp; {{ convertSecondsToTime(bestScores1v1.value) }}</span
+            >
+            <span *ngIf="bestScores1v1.playerUsername.length >= 10">
+                Top&nbsp;{{ i + 1 }}&nbsp;:&nbsp; {{ bestScores1v1.playerUsername.substring(0, 10) }}... &nbsp;{{
+                    convertSecondsToTime(bestScores1v1.value)
+                }}
+            </span>
+        </p>
+    </div>
+
+    <div class="button-group">
+        <button class="button" mat-raised-button color="primary" (click)="startGameCreation()">Créer la partie</button>
+    </div>
+</div>

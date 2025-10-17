@@ -1,0 +1,108 @@
+<div id="differences-area">
+    <div class="canvas-area">
+        <div class="button-group">
+            <button 
+                class="button"
+                type="button"
+                mat-raised-button color="primary"
+                (click)="leftInputButton.click()">
+                <input #leftInputButton
+                    type="file" 
+                    accept="image/bmp" 
+                    (change)="handleFileInput($event, leftBackCanvas)"/>
+                Choisir une image
+            </button>
+            <button 
+                class="button"
+                type="button" 
+                mat-raised-button color="primary"
+                (click)="handleResetButton(leftBackCanvas)">
+                Réinitialiser l'image
+            </button>
+        </div>
+
+        <div class="wrapper">
+            <canvas 
+                #leftBackCanvas
+                id="leftBackCanvas"
+                class="below" 
+                [attr.width]="canvasWidth" 
+                [attr.height]="canvasHeight">
+            </canvas>
+            <canvas 
+                #leftFrontCanvas
+                id="leftFrontCanvas" 
+                class="top" 
+                [attr.width]="canvasWidth" 
+                [attr.height]="canvasHeight">
+            </canvas>
+            <canvas
+                #leftDisplayCanvas
+                class="top"
+                [tabindex]="1"
+                [attr.width]="canvasWidth"
+                [attr.height]="canvasHeight"
+                (mousedown)="onMouseDown($event, 'left')"
+                (keydown)="onKeyToggle($event)"
+                (keyup)="onKeyToggle($event)"
+                (mousemove)="onMouseMove($event)"
+                (mouseup)="onMouseUp($event)"
+                (mouseout)="onMouseUp($event)">
+            </canvas>
+        </div>
+    </div>
+
+    <div class="canvas-area">
+        <div class="button-group">
+            <button 
+                class="button" 
+                type="button"
+                mat-raised-button color="primary"
+                (click)="rightInputButton.click()">
+                <input 
+                    #rightInputButton 
+                    type="file" 
+                    accept="image/bmp" 
+                    (change)="handleFileInput($event, rightBackCanvas)"/>
+                Choisir une image
+            </button>
+            <button 
+                class="button"
+                type="button"
+                mat-raised-button color="primary"
+                (click)="handleResetButton(rightBackCanvas)">
+                Réinitialiser l'image
+            </button>
+        </div>
+
+        <div class="wrapper">
+            <canvas 
+                #rightBackCanvas
+                id="rightBackCanvas"
+                class="below" 
+                [attr.width]="canvasWidth" 
+                [attr.height]="canvasHeight">
+            </canvas>
+            <canvas 
+                #rightFrontCanvas
+                id="rightFrontCanvas"
+                class="top" 
+                [attr.width]="canvasWidth" 
+                [attr.height]="canvasHeight">
+            </canvas>
+            <canvas
+                #rightDisplayCanvas
+                class="top"
+                [tabindex]="1"
+                [attr.width]="canvasWidth"
+                [attr.height]="canvasHeight"
+                (mousedown)="onMouseDown($event, 'right')"
+                (keydown)="onKeyToggle($event)"
+                (keyup)="onKeyToggle($event)"
+                (mousemove)="onMouseMove($event)"
+                (mouseup)="onMouseUp($event)"
+                (mouseout)="onMouseUp($event)">
+            </canvas>
+        </div>
+    </div>
+</div>

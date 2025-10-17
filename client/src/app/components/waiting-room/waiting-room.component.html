@@ -1,0 +1,19 @@
+<app-sidenav></app-sidenav>
+
+<main class="main mat-app-background">
+    <div *ngIf="roomInfo && roomInfo.players" class="waiting-room">
+        <h1 class="title">Salle d'attente - {{ roomInfo.mode }}</h1>
+        <ul class="players-list">
+            <li *ngFor="let player of roomInfo.players" class="player">
+                <span *ngIf="isOwner(player.uid)" class="owner-crown">👑</span>
+                {{ player.username }}
+            </li>
+        </ul>
+        <div class="button-group">
+            <button *ngIf="isOwner(this.user.uid)" class="start-game-button" (click)="startGame()">Commencer la partie</button>
+            <button class="quit-button" (click)="quit()">Quitter</button>
+        </div>
+    </div>
+</main>
+
+<app-chat-container></app-chat-container>

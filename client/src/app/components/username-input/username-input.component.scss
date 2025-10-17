@@ -1,0 +1,58 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 25px 40px;
+}
+
+button.username-input-button {
+    font-size: large;
+    height: 45px;
+    width: 100px;
+}
+
+#username-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #9c27b0;
+    border: 3px solid #9c27b0;
+}
+
+#return-button {
+    height: 45px;
+    width: 100px;
+    border: 0px;
+    font-size: 1.2rem;
+    margin: auto;
+}
+
+#username-input > input {
+    height: 45px;
+    width: 300px;
+    border: 0px;
+    font-size: 1.2rem;
+}
+
+#username-input > input:focus {
+    outline: none;
+    background-color: #deb4e6;
+}
+
+#username-input > input.invalid-username {
+    background-color: #cf9191;
+}
+
+p.popup-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+div#invalid-username {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 4px;
+    color: #e46666;
+}

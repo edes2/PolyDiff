@@ -1,0 +1,192 @@
+<app-sidenav> </app-sidenav>
+<main class="mat-app-background" (keydown)="onKeyDown($event)" [tabindex]="2">
+    <div class="container">
+        <mat-card class="nav-bar">
+            <button class="button" mat-raised-button color="primary" (click)="openWarningPopup()">Retour</button>
+
+            <div style="display: flex; flex-direction: row">
+                <app-radius-selection-menu (notify)="setRadius($event)"> </app-radius-selection-menu>
+
+                <button
+                    id="validate-button"
+                    class="button"
+                    type="button"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="!isValid"
+                    (click)="createCard()"
+                >
+                    Trouver les différences
+                </button>
+            </div>
+        </mat-card>
+
+        <mat-card id="drawing-bar">
+            <button class="button" type="button" mat-raised-button color="primary" (click)="resetCanvas('left')">
+                Réinitialiser le dessin de gauche
+            </button>
+
+            <div id="drawing-buttons">
+                <mat-form-field id="thickness-field">
+                    <mat-label>Épaisseur du crayon et de l'efface</mat-label>
+                    <mat-select [(ngModel)]="thicknessPicked">
+                        <mat-option *ngFor="let thickness of brushesThickness" [value]="thickness">{{ thickness }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="button-group">
+                    <mat-button-toggle-group>
+                        <mat-button-toggle
+                            id="pencil-button"
+                            class="icon-button"
+                            type="button"
+                            mat-raised-button
+                            color="primary"
+                            (click)="setSelectedCommandType('drawLine')"
+                        >
+                            <img src="./assets/brush.png" height="40px" width="40px" />
+                        </mat-button-toggle>
+
+                        <mat-button-toggle
+                            id="eraser-button"
+                            class="icon-button"
+                            type="button"
+                            mat-raised-button
+                            color="primary"
+                            (click)="setSelectedCommandType('erase')"
+                        >
+                            <img src="./assets/eraser.png" height="35px" width="35px" />
+                        </mat-button-toggle>
+
+                        <mat-button-toggle
+                            id="rectangle-button"
+                            class="icon-button"
+                            type="button"
+                            mat-raised-button
+                            color="primary"
+                            (click)="setSelectedCommandType('drawRectangle')"
+                        >
+                            <span class="hover">Maintenir shift pour faire un carré</span>
+                            <img src="./assets/rectangle.png" height="38px" width="45px" />
+                        </mat-button-toggle>
+
+                        <mat-button-toggle
+                            id="ellipse-button"
+                            class="icon-button"
+                            type="button"
+                            mat-raised-button
+                            color="primary"
+                            (click)="setSelectedCommandType('drawEllipse')"
+                        >
+                            <span class="hover">Maintenir shift pour faire un cercle</span>
+                            <img src="./assets/ellipse.png" height="38px" width="45px" />
+                        </mat-button-toggle>
+
+                        <mat-button-toggle
+                            id="fill-button"
+                            class="icon-button"
+                            type="button"
+                            mat-raised-button
+                            color="primary"
+                            (click)="setSelectedCommandType('fill')"
+                        >
+                            <!-- <span class="hover">Maintenir shift pour faire un cercle</span> -->
+                            <img src="./assets/seau.png" height="45px" width="45px" />
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <button id="color-button" class="icon-button" type="button" mat-raised-button color="primary" (click)="captureEvent()">
+                        <img src="./assets/color.png" height="44px" width="40px" />
+                        <input #colorPicker id="color-picker" type="color" [value]="colorPicked" [(ngModel)]="colorPicked" />
+                    </button>
+                </div>
+
+                <div class="button-group">
+                    <button
+                        id="right-button"
+                        class="icon-button"
+                        type="button"
+                        mat-raised-button
+                        color="primary"
+                        (click)="duplicateCanvas('left', 'right')"
+                    >
+                        <span class="hover">Dupliquer le dessin sur l'image de droite</span>
+                        <img src="./assets/right-arrow.png" height="40px" width="40px" />
+                    </button>
+
+                    <button id="switch-button" class="icon-button" type="button" mat-raised-button color="primary" (click)="swapCanvases()">
+                        <span class="hover">Intervertir les dessins</span>
+                        <img src="./assets/switch.png" height="44px" width="40px" />
+                    </button>
+
+                    <button
+                        id="left-button"
+                        class="icon-button"
+                        type="button"
+                        mat-raised-button
+                        color="primary"
+                        (click)="duplicateCanvas('right', 'left')"
+                    >
+                        <span class="hover">Dupliquer le dessin sur l'image de gauche</span>
+                        <img src="./assets/left-arrow.png" height="40px" width="40px" />
+                    </button>
+                </div>
+
+                <div class="button-group">
+                    <button
+                        id="undo-button"
+                        class="icon-button"
+                        type="button"
+                        mat-raised-button
+                        color="primary"
+                        [disabled]="undoButtonIsDisabled"
+                        (click)="undoDrawingCommand()"
+                    >
+                        <span class="hover">Annuler l'action</span>
+                        <img src="./assets/undo.png" height="40px" width="40px" />
+                    </button>
+
+                    <button
+                        id="redo-button"
+                        class="icon-button"
+                        type="button"
+                        mat-raised-button
+                        color="primary"
+                        [disabled]="redoButtonIsDisabled"
+                        (click)="redoDrawingCommand()"
+                    >
+                        <span class="hover">Rétablir l'action</span>
+                        <img src="./assets/redo.png" height="40px" width="40px" />
+                    </button>
+                </div>
+            </div>
+
+            <button class="button" type="button" mat-raised-button color="primary" (click)="resetCanvas('right')">
+                Réinitialiser le dessin de droite
+            </button>
+        </mat-card>
+
+        <mat-card id="drawing-area">
+            <app-difference-area
+                #differenceArea
+                [selectedCommand]="selectedCommand"
+                [colorPicked]="colorPicked"
+                [thicknessPicked]="thicknessPicked"
+                (newDrawingCommand)="catchNewDrawingEvent($event)"
+            >
+            </app-difference-area>
+
+            <div>
+                <button class="button" type="button" mat-raised-button color="primary" (click)="imageInput.click()">
+                    <input #imageInput type="file" accept="image/bmp" (change)="loadImage($event)" />
+                    Choisir les deux images
+                </button>
+
+                <button class="button" type="button" mat-raised-button color="primary" (click)="resetBothBackgrounds()">
+                    Réinitialiser les images
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

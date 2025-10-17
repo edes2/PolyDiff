@@ -1,0 +1,148 @@
+<app-sidenav> </app-sidenav>
+<main id="main" class="mat-app-background">
+    <mat-card id="nav-bar">
+        <button id="return-button" mat-raised-button color="primary" routerLink="/home">Retour</button>
+        <div id="title" class="text-content">Profile</div>
+    </mat-card>
+    <div id="content" class="content-wrapper two-column-grid">
+        <div class="form-container">
+            <h3>Informations du compte</h3>
+            <form #profileForm id="profile-form" (ngSubmit)="onSubmit()">
+                <!-- Username Field -->
+                <div class="username-wrapper">
+                    <p>Username: {{ this.info.username }}</p>
+                    <label for="name">Changer nom d'utilisateur </label>
+                    <input id="name" matInput placeholder="Entre le nouveau nom d'utilisateur" type="text" [(ngModel)]="this.formUsername" required />
+                    <!-- set color to displayColor-->
+                    <div *ngIf="this.displayMessage" [style.color]="this.displayMessageColor">
+                        {{ this.displayMessage }}
+                    </div>
+                </div>
+
+                <div class="email-wrapper">
+                    <p>Email: {{ this.info.email }}</p>
+                </div>
+
+                <!-- Sound Upload Field 1 -->
+                <div class="sound-selection-wrapper">
+                    <p>Son de différence trouvée</p>
+                    <div *ngFor="let sound of differenceFoundSounds; let i = index">
+                        <button type="button" (click)="playSound(sound.url)">Jouer</button>
+                        <input
+                            type="radio"
+                            id="sound1-{{ i }}"
+                            name="sound1"
+                            [value]="sound"
+                            [(ngModel)]="selectedDiffSound"
+                            (change)="loadSound(i, 'diffSound')"
+                        />
+                        <label for="sound1-{{ i }}">Son par défaut {{ i + 1 }}</label>
+                    </div>
+                </div>
+
+                <!-- Sound Upload Field 2 -->
+                <div class="sound-selection-wrapper">
+                    <p>Son d'erreur</p>
+                    <div *ngFor="let sound of errorSounds; let i = index">
+                        <button type="button" (click)="playSound(sound.url)">Jouer</button>
+                        <input
+                            type="radio"
+                            id="sound2-{{ i }}"
+                            name="sound2"
+                            [value]="sound"
+                            [(ngModel)]="selectedErrorSound"
+                            (change)="loadSound(i, 'errorSound')"
+                        />
+                        <label for="sound2-{{ i }}">Son par défaut {{ i + 1 }}</label>
+                    </div>
+                </div>
+
+                <!-- Avatar Field -->
+                <div class="avatar-wrapper">
+                    <p>Mon Avatar (128x128)</p>
+                    <img [src]="this.avatarSrc" alt="avatar" class="avatar-image" />
+                    <div class="default-avatars">
+                        <label *ngFor="let avatar of defaultAvatars; let i = index" class="default-avatar-label">
+                            <input type="radio" name="avatar" [value]="avatar" (change)="selectAvatar(i)" hidden />
+                            <img [src]="avatar" alt="Default Avatar {{ i + 1 }}" class="avatar-option-image" />
+                        </label>
+                    </div>
+                    <input #imageInput type="file" (change)="loadImage($event)" accept="image/*" id="avatar" name="avatar" hidden />
+                    <label for="avatar" class="change-avatar-btn" mat-raised-button color="primary">Téléverser un avatar</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    id="submit-button"
+                    type="submit"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="
+                        this.avatarHasBeenChanged === false &&
+                        this.formUsername === '' &&
+                        this.diffSoundHasBeenChanged === false &&
+                        this.errorSoundHasBeenChanged === false
+                    "
+                >
+                    Sauvegarder
+                </button>
+            </form>
+        </div>
+
+        <div class="profile-statistics-container">
+            <div class="top-container">
+                <h3>Statistiques</h3>
+                <p>Nombre de parties jouées: {{ gamesPlayed }}</p>
+                <p>Nombre de parties gagnées: {{ gamesWon }}</p>
+                <p>Moyenne de différences trouvées par partie: {{ averageDiff | number: '1.2-2' }}</p>
+                <p>Temps moyen par partie: {{ averageGameDuration }}</p>
+            </div>
+            <div class="bottom-container">
+                <h3>Connexions et déconnexions</h3>
+                <div class="bottom-list">
+                    <ul>
+                        <li *ngFor="let connection of connections">
+                            <div class="connection-item">
+                                <p *ngIf="connection.connectedAt">Connection: {{ connection.connectedAt | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+                                <p *ngIf="connection.disconnectedAt">Déconnection: {{ connection.disconnectedAt | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game history list -->
+        <div class="game-history-container">
+            <h3>Historique des parties</h3>
+            <div class="history-container">
+                <ul>
+                    <li *ngFor="let game of history">
+                        <div class="game-item">
+                            <p><strong>Date de la partie:</strong> {{ game.date }}</p>
+                            <p><strong>Temps de début de partie:</strong> {{ game.startingTime }}</p>
+                            <p><strong>Durée:</strong> {{ game.duration }}</p>
+                            <p><strong>Mode de jeu:</strong> {{ game.gameMode }}</p>
+                            <p><strong>Nombre de différences trouvées:</strong> {{ getDifferenceCountForUid(game, this.info.uid) }}</p>
+                            <p *ngIf="game.gameMode === 'Classique'" [style.color]="game.winnerId === info.uid ? 'green' : 'red'">
+                                <strong>Partie remportée:</strong> {{ game.winnerId === info.uid ? 'Oui' : 'Non' }}
+                            </p>
+                            <p>
+                                <strong>Players:</strong>
+                                <span *ngFor="let username of game.playersUsername; let isLast = last">
+                                    {{ username }}<span *ngIf="!isLast">,</span>
+                                </span>
+                            </p>
+                            <!-- <p>
+                            <strong>Second Ranked:</strong>
+                            {{ game ? game.secondRankedUsername : 'N/A' }}
+                            (ID: {{ game.secondRankedId ? game.secondRankedId : 'N/A' }})
+                        </p> -->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

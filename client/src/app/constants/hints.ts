@@ -1,0 +1,5 @@
+export const FIRST_SURROUND_DISTANCE = 15;
+
+export const SECOND_SURROUND_DISTANCE = 120;
+
+export const THIRD_SURROUND_DISTANCE = 230;

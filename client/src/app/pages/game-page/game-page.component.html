@@ -1,0 +1,106 @@
+<app-sidenav [mode]="this.mode"> </app-sidenav>
+<main #animation class="mat-app-background" [ngClass]="this.blurBackground ? 'blur' : ''">
+    <mat-card class="nav-bar">
+        <div id="top">
+            <h1 id="title">{{ getName() }}</h1>
+            <button id="give-up-button" mat-raised-button color="primary" (click)="this.openQuitConfirmationPopup()">
+                <span>{{ this.isReplaying ? 'Quitter' : 'Abandonner' }}</span>
+            </button>
+            <app-voice-chat
+                *ngIf="this.manager.playingInfo?.roomId && !this.manager.isSolo"
+                [roomId]="this.manager.playingInfo.roomId"
+            ></app-voice-chat>
+        </div>
+    </mat-card>
+
+    <div id="game-area">
+        <div *ngIf="this.manager.playingInfo" id="game-info">
+            <h1>Informations générales&nbsp;:</h1>
+            <p>Mode de jeu&nbsp;:&nbsp;{{ this.manager.playingInfo.mode }}</p>
+            <p *ngIf="this.manager.playingInfo.cardInfo">Niveau de difficulté&nbsp;:&nbsp;{{ this.manager.playingInfo.cardInfo.difficulty }}</p>
+            <p *ngIf="this.manager.playingInfo.cardInfo">Nombre total de différences&nbsp;:&nbsp;{{ this.manager.playingInfo.cardInfo.diffCount }}</p>
+
+            <div>
+                <h1>Configuration&nbsp;:</h1>
+                <p *ngIf="this.manager.isCheat && this.manager.cheatDiffs.length > 0">Mode Triche &nbsp;:&nbsp;Activé</p>
+                <p *ngIf="!this.manager.isCheat || this.manager.cheatDiffs.length === 0">Mode Triche &nbsp;:&nbsp;Désactivé</p>
+
+                <!-- TODO SHOW GAME CONFIG <p *ngIf="this.manager > 2">
+                    {{ this.gameManagerService.settings[2].description }}&nbsp;:&nbsp;{{ this.gameManagerService.settings[2].value }}s
+                </p> -->
+            </div>
+            <div *ngIf="this.manager.playingInfo.mode === 'Temps limité'">
+                <h1>Configuration&nbsp;:</h1>
+                <!-- <p *ngFor="let setting of this.gameManagerService.settings">{{ setting.description }}&nbsp;:&nbsp;{{ setting.value }}s</p> -->
+            </div>
+
+            <h1>État de la partie&nbsp;:</h1>
+            <div *ngFor="let player of this.manager.playingInfo.players">
+                <p *ngIf="this.manager.user === player.user">
+                    <span class="myself">{{ player.user.username }}</span>
+                    <span>&nbsp;: </span>
+                    <span class="count">{{ player.diffCount }} &nbsp;</span>
+                    <span class="count">différences &nbsp;</span>
+                </p>
+            </div>
+            <div *ngFor="let player of this.manager.playingInfo.players">
+                <p *ngIf="this.manager.user !== player.user">
+                    <!-- <span>Nombre de {{ this.getDiffWord(this.gameManagerService.getDiffCount()) }}&nbsp;par </span> -->
+                    <span class="other">{{ player.user.username }}</span>
+                    <span>&nbsp;: </span>
+                    <span class="count">{{ player.diffCount }}&nbsp;</span>
+                    <span class="count">différences &nbsp;</span>
+                </p>
+            </div>
+            <div *ngFor="let quitter of this.quitters">
+                <p class="strike-through">
+                    <span class="other">{{ quitter.user.username }}</span>
+                    <span>&nbsp;: </span>
+                    <span class="count">{{ quitter.diffCount }}&nbsp;</span>
+                    <span class="count">différences &nbsp;</span>
+                </p>
+            </div>
+        </div>
+
+        <div id="game-content">
+            <h1 id="timer">{{ this.manager.timerString }}</h1>
+
+            <div id="game-canvas">
+                <div class="canvas">
+                    <app-play-area
+                        #leftCanvas
+                        side="left"
+                        [socketService]="socketService"
+                        [canSendClick]="this.manager.clickActivated"
+                        [replayMultiplier]="this.replayMultiplier"
+                    >
+                    </app-play-area>
+                </div>
+
+                <div class="canvas">
+                    <app-play-area
+                        #rightCanvas
+                        side="right"
+                        [socketService]="socketService"
+                        [canSendClick]="this.manager.clickActivated"
+                        [replayMultiplier]="this.replayMultiplier"
+                    >
+                    </app-play-area>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="replay">
+        <app-replay
+            #replay
+            [isReplaying]="isReplaying"
+            [replayMultiplier]="replayMultiplier"
+            (setFlashService)="onSetFlashService()"
+            (replayMultiplierChange)="onMultiplierChange($event)"
+            (isReplayingChange)="onReplayingChange($event)"
+            (isShortcutableChange)="onShortcutChange($event)"
+        >
+        </app-replay>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

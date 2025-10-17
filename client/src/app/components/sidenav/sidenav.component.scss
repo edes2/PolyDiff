@@ -1,0 +1,104 @@
+// Inspired by: https://github.com/aziznal/angular-dynamic-resizeable-sidenav/tree/3-toggleable-sidenav
+
+$sidenav-z-index: 999;
+
+:host {
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 5px solid rgb(192, 192, 192);
+    transition: width 300ms cubic-bezier(0.02, 0.68, 0.63, 0.98);
+
+    z-index: $sidenav-z-index;
+}
+
+.sidenav-container {
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.sidenav {
+    width: min(300px, 30vw);
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+    z-index: $sidenav-z-index;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.toggle-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    $size: 30px;
+    width: $size;
+    height: $size;
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+    top: 40vh;
+    right: calc($size / -2) - 6px;
+
+    border: 1px solid gray;
+    border-radius: 50%;
+    background-color: white;
+
+    cursor: pointer;
+
+    &:hover {
+        border: 2px solid #9c27b0;
+    }
+
+    &.is-flipped {
+        transform: rotate(-180deg);
+    }
+
+    z-index: $sidenav-z-index + 1;
+}
+
+.darken-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    box-sizing: border-box;
+    padding: 16px;
+    min-width: calc(var(--min-expanded-sidenav-width) - 32px);
+    text-decoration: none;
+    color: black;
+    transition: background-color 75ms ease-out;
+    border-radius: 4px;
+
+    // change overflowing text to ellipsis
+    .text-container {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &:hover {
+        background-color: #deebff;
+    }
+
+    &.active {
+        background-color: #c1daff;
+        font-weight: bold;
+        color: rgb(36, 82, 231);
+    }
+}

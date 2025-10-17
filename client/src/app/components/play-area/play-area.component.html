@@ -1,0 +1,10 @@
+<div>
+    <div style="position: relative">
+        <div class="wrapper">
+            <canvas #frontCanvasFirstHint class="topFirstHint" width="640px" height="480px"></canvas>
+            <canvas #frontCanvasSecondHint class="topSecondHint" width="640px" height="480px" (click)="mouseHitDetect($event)"> </canvas>
+            <canvas class="below" width="640px" height="480px" #canvas></canvas>
+            <img #errorMessage style="display: none; z-index: 1" src="./assets/erreur.png" />
+        </div>
+    </div>
+</div>

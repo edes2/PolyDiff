@@ -1,0 +1,16 @@
+<div class="main">
+    <p class="popup-title">{{ this.data.message.content }}</p>
+    <div class="popup-button">
+        <button class="popup-button"
+            mat-raised-button color="primary" 
+            (click)="this.close(this.data.message.leftRouterLink, 1)">
+            {{ this.data.message.leftButtonText }}
+        </button>
+        <button class="popup-button"
+            *ngIf="this.data.message.rightButtonText"
+            mat-raised-button color="primary"
+            (click)="this.close(this.data.message.rightRouterLink, 2)">
+            {{ this.data.message.rightButtonText }}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<mat-form-field id="radius-field">
+    <mat-label>Taille du rayon d'élargissement</mat-label>
+    <mat-select [(value)]="selectedSize" (selectionChange)="changeEnlargementRadius()">
+        <mat-option *ngFor="let radiusSize of sizes" [value]="radiusSize">{{ radiusSize }}</mat-option>
+    </mat-select>
+</mat-form-field>

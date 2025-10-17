@@ -1,0 +1,21 @@
+<div class="rating-popup">
+    <mat-dialog-content>
+        <p>Veuillez noter la partie</p>
+        <div class="rating">
+            <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" [class.active]="i < rating" (click)="setRating(i + 1)">star</mat-icon>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button
+            class="rating-button"
+            mat-button
+            mat-raised-button
+            color="primary"
+            [disabled]="this.ratingHasChanged === false"
+            (click)="submitRating()"
+        >
+            Soumettre
+        </button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto Slab&display=swap');
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    height: 400px;
+    width: 400x;
+    padding: 40px;
+}
+
+.bonus-div {
+    position: relative;
+    left: 640px;
+    top: 130px;
+    height: 4%;
+    width: 70px;
+}
+
+span {
+    font-size: 20px;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.home-button {
+    width: 400px;
+    height: 58px;
+    border-radius: 20px;
+    font-size: large;
+}
+
+#team-name {
+    position: fixed;
+    bottom: 55px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: #e07436;
+}
+
+.name {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    animation: word 18s infinite ease-in-out;
+    transform: translate(-50%, 50%);
+    color: #ffffff;
+}
+
+.name:nth-child(1) {
+    animation-delay: -18s;
+}
+
+.name:nth-child(2) {
+    animation-delay: -15s;
+}
+
+.name:nth-child(3) {
+    animation-delay: -12s;
+}
+
+.name:nth-child(4) {
+    animation-delay: -9s;
+}
+
+.name:nth-child(5) {
+    animation-delay: -6s;
+}
+
+.name:nth-child(6) {
+    animation-delay: -3s;
+}
+
+@keyframes word {
+    0%,
+    5%,
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+    20%,
+    80% {
+        filter: blur(1em);
+        opacity: 0;
+    }
+}

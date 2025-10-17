@@ -1,0 +1,3 @@
+PROD = "PROD"
+DEV = "DEV"
+ENV = "ENVIRONMENT"

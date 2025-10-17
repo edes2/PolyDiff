@@ -1,0 +1,24 @@
+<app-sidenav> </app-sidenav>
+<main class="main mat-app-background">
+    <div>
+        <img src="assets/nemo.png" alt="Logo Projet" />
+    </div>
+
+    <div class="button-group">
+        <button mat-raised-button class="home-button" color="primary" (click)="redirect(homePageRedirect.Classic)">Mode Classique</button>
+        <button mat-raised-button class="home-button" color="primary" (click)="redirect(homePageRedirect.LimitedTime)">Mode Temps Limité</button>
+        <button mat-raised-button class="home-button" color="primary" (click)="redirect(homePageRedirect.Zen)">Mode Zen</button>
+        <button mat-raised-button class="home-button" color="primary" [routerLink]="['/auth-admin']">Administration</button>
+    </div>
+
+    <div>
+        <span id="team-name">Équipe 101</span>
+        <span class="name">Étienne Desclaux</span>
+        <span class="name">Mohamed Reda Rhanmouni</span>
+        <span class="name">Amirmasood Dadkhah</span>
+        <span class="name">Nassour Nassour</span>
+        <span class="name">Ghali Chraibi</span>
+        <span class="name">Nina Lounici</span>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

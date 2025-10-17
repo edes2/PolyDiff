@@ -1,0 +1,39 @@
+<app-sidenav> </app-sidenav>
+<main class="main mat-app-background">
+    <mat-card id="nav-bar">
+        <button id="return-button" mat-raised-button color="primary" routerLink="/home">Retour</button>
+        <div id="title" class="text-content">Mode {{ gameSelection }}</div>
+    </mat-card>
+    <div class="container">
+        <img src="assets/nemo.png" alt="Logo Projet" />
+        <div class="button-group">
+            <!-- <button class="button" mat-raised-button class="home-button" color="primary" (click)="redirectToSelection(gameOptions.Solo)">
+            Jouer en Solo
+        </button> -->
+            <button
+                class="button"
+                mat-raised-button
+                class="home-button"
+                color="primary"
+                (click)="redirectToSelection(gameOptions.Create)"
+                [disabled]="!isModeAvailable()"
+            >
+                Créer une partie
+            </button>
+            <button
+                class="button"
+                mat-raised-button
+                class="home-button"
+                color="primary"
+                (click)="redirectToSelection(gameOptions.Join)"
+                [disabled]="!isModeAvailable()"
+            >
+                Joindre une partie
+            </button>
+            <mat-error *ngIf="!isModeAvailable() && errorMessage">
+                <p>{{ errorMessage }}</p>
+            </mat-error>
+        </div>
+    </div>
+</main>
+<app-chat-container></app-chat-container>

@@ -1,0 +1,39 @@
+<button id="return-button" mat-raised-button color="primary" routerLink="signin">Retour</button>
+
+<main class="main mat-app-background">
+    <div class="signup-container">
+        <img src="./assets/nemo.png" class="logo" alt="Logo Projet" />
+
+        <form class="form login" (ngSubmit)="onSignUpClick()">
+            <div class="error-message" *ngIf="showError">{{ errorMessage }}</div>
+
+            <div class="form-field">
+                <label for="login-username"><mat-icon>person</mat-icon></label>
+                <input type="text" name="username" class="form-input" [(ngModel)]="username" placeholder="Nom d'utilisateur" required />
+            </div>
+
+            <div class="form-field">
+                <label for="login-username"><mat-icon>alternate_email</mat-icon></label>
+                <input type="text" name="username" class="form-input" [(ngModel)]="email" placeholder="Courriel" required />
+            </div>
+
+            <div class="form-field">
+                <label for="login-password"><mat-icon>lock</mat-icon></label>
+                <input type="password" name="password" class="form-input" [(ngModel)]="password" placeholder="Mot de passe" required />
+            </div>
+
+            <div class="form-field">
+                <label for="login-password"><mat-icon>lock</mat-icon></label>
+                <input
+                    type="password"
+                    name="rewritePassword"
+                    class="form-input"
+                    [(ngModel)]="rewritePassword"
+                    placeholder="Confirmez votre mot de passe"
+                    required
+                />
+            </div>
+            <button class="button" type="submit" [disabled]="isSignUpDisabled()">Créer votre compte</button>
+        </form>
+    </div>
+</main>

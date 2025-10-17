@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+
+.main {
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.waiting-room {
+    margin-top: 15vh;
+}
+
+.title {
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    color: #9c27b0;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.players-list {
+    list-style: none;
+    padding: 0;
+}
+
+.player {
+    background: #e6e6e6;
+    color: #333333;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    background: #9c27b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-group button:hover {
+    background-color: #651473;
+}
+
+.button-group button:disabled {
+    background-color: #cccccc;
+    cursor: default;
+}
+
+.button-group .start-game-button {
+    background-color: #9c27b0;
+}
+
+.owner-crown {
+    color: gold;
+    margin-right: 5px;
+    font-size: 1.2em; /* Adjust size as needed */
+}

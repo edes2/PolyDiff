@@ -1,0 +1,52 @@
+#differences-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.canvas-area {
+    margin: 20px 10px;
+    padding: 15px 10px 10px;
+    border-radius: 4px;
+    background-color: #5c5c5c;
+    border: 1px solid #000000;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.button {
+    margin-left: 15px;
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    margin: 15px;
+    width: 640px;
+    height: 480px;
+}
+
+canvas {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+}
+
+.below {
+    z-index: 1;
+}
+
+.top {
+    z-index: 2;
+}

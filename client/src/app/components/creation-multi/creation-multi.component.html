@@ -1,0 +1,49 @@
+<div id="title" class="text-content">Configuration de partie</div>
+<div class="main">
+    <div class="setting-container">
+        <div class="duration-choice">
+            <h1>Durée de la partie</h1>
+            <div class="setting-input">
+                <input #input type="number" step="1" [value]="choice.duration" [(ngModel)]="choice.duration" [min]="0" [max]="300" />
+            </div>
+
+            <div *ngIf="mode === 'Temps limité'" class="setting-input">
+                <h1>Durée temps Bonus (s)</h1>
+                <input #input type="number" step="1" [value]="choice.limitedBonus" [(ngModel)]="choice.limitedBonus" [min]="5" [max]="20" />
+            </div>
+        </div>
+        <div class="cheating-choice">
+            <h1>Mode triche</h1>
+            <div *ngIf="isCheating" class="popup-button-container">
+                <button class="popup-button" mat-raised-button style="background-color: #9c27b0; color: white" (click)="changeChoiceCheating(true)">
+                    Oui
+                </button>
+                <button
+                    class="popup-button"
+                    mat-raised-button
+                    style="background-color: transparent; color: white"
+                    (click)="changeChoiceCheating(false)"
+                >
+                    Non
+                </button>
+            </div>
+            <div *ngIf="!isCheating" class="popup-button-container">
+                <button
+                    class="popup-button"
+                    mat-raised-button
+                    style="background-color: transparent; color: white"
+                    (click)="changeChoiceCheating(true)"
+                >
+                    Oui
+                </button>
+                <button class="popup-button" mat-raised-button style="background-color: #9c27b0; color: white" (click)="changeChoiceCheating(false)">
+                    Non
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="button-container">
+    <button class="cancel-button" mat-raised-button color="primary" (click)="cancelCreation()">Annuler</button>
+    <button class="create-button" mat-raised-button color="accent" (click)="saveConfiguration()">Créer</button>
+</div>

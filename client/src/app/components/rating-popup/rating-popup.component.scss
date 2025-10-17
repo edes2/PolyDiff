@@ -1,0 +1,32 @@
+.rating-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: auto;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+        cursor: pointer;
+        color: grey;
+
+        &.active {
+            color: gold;
+        }
+    }
+}
+
+button.popup-button {
+    font-size: large;
+    width: fit-content;
+    min-height: 55px;
+    min-width: 150px;
+    margin: 10px;
+}

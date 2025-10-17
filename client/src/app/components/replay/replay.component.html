@@ -1,0 +1,26 @@
+<div *ngIf="this.isReplaying" id="replay-area">
+    <h1>Reprise de la partie :</h1>
+    <div id="replay-top">
+        <button class="replay-button" mat-raised-button color="primary" (click)="replayButtonClick()">
+            <img height="40px" width="40px" src="./assets/replay.png" />
+        </button>
+        <button class="replay-button" mat-raised-button color="primary" (click)="togglePause()">
+            <img *ngIf="isReplayPaused" height="40px" width="40px" src="./assets/play.png" />
+            <img *ngIf="!isReplayPaused" height="40px" width="40px" src="./assets/pause.png" />
+        </button>
+    </div>
+
+    <progress id="replay-status" [value]="this.replayService.replayTime" [max]="this.replayService.gameDuration"></progress>
+
+    <mat-button-toggle-group id="replay-speed" value="1">
+        <mat-button-toggle value="1" class="replay-button" type="button" mat-raised-button color="primary" (click)="changeReplaySpeed(1)">
+            1x
+        </mat-button-toggle>
+        <mat-button-toggle value="2" class="replay-button" type="button" mat-raised-button color="primary" (click)="changeReplaySpeed(2)">
+            2x
+        </mat-button-toggle>
+        <mat-button-toggle value="4" class="replay-button" type="button" mat-raised-button color="primary" (click)="changeReplaySpeed(4)">
+            4x
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>

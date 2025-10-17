@@ -1,0 +1,25 @@
+<div *ngIf="isExpanded" [ngClass]="{ 'darken-overlay': isExpanded }" (click)="toggle()"></div>
+<mat-drawer-container class="sidenav-container" autosize>
+    <mat-drawer #sidenav class="sidenav" mode="side">
+        <app-sidenav-link goTo="/home" [mode]="mode">
+            <mat-icon icon>home</mat-icon>
+            Home
+        </app-sidenav-link>
+
+        <app-sidenav-link goTo="/profile" [mode]="mode">
+            <mat-icon icon>account_circle</mat-icon>
+            Profile
+        </app-sidenav-link>
+
+        <app-sidenav-link goTo="/leaderboard" [mode]="mode">
+            <mat-icon icon>leaderboard</mat-icon>
+            Leaderboard
+        </app-sidenav-link>
+
+        <app-sidenav-link goTo="/signin" [mode]="mode">
+            <mat-icon icon>exit_to_app</mat-icon>
+            Sign out
+        </app-sidenav-link>
+    </mat-drawer>
+</mat-drawer-container>
+<button class="toggle-button" (click)="toggle()" [class.is-flipped]="isExpanded"><mat-icon icon>chevron_right</mat-icon></button>

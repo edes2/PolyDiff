@@ -1,0 +1,54 @@
+<div id="main">
+    <!-- <div class="button-group">
+        <button class="button" mat-raised-button color="primary" (click)="confirmDelete()" (keydown)="disableDefaultFocus($event)">
+            Supprimer l'historique
+        </button>
+        <button id="quit-button" (click)="exitPopup()">x</button>
+    </div>
+
+    <div class="history-container">
+        <div class="column">
+            <p class="column-title">Date</p>
+            <p *ngFor="let gameHistory of gamesHistory">{{ gameHistory.date }}</p>
+        </div>
+        <div class="column">
+            <p class="column-title">Heure</p>
+            <p *ngFor="let gameHistory of gamesHistory">{{ gameHistory.startingTime }}</p>
+        </div>
+        <div class="column">
+            <p class="column-title">Durée</p>
+            <p *ngFor="let gameHistory of gamesHistory">{{ gameHistory.duration }}</p>
+        </div>
+        <div class="column">
+            <p class="column-title">Mode de jeu</p>
+            <p *ngFor="let gameHistory of gamesHistory">{{ gameHistory.gameMode }}</p>
+        </div>
+        <div class="column">
+            <p class="column-title">Joueur 1</p>
+            <p *ngFor="let gameHistory of gamesHistory" [ngClass]="classFirstRankedUsername(gameHistory)">
+                {{ gameHistory.descendentRankUsername[0] }}
+            </p>
+        </div>
+        <div class="column">
+            <p class="column-title">Joueur 2</p>
+            <p *ngFor="let gameHistory of gamesHistory" [ngClass]="classSecondRankedUsername(gameHistory)">
+                {{ gameHistory.descendentRankUsername[1] }}
+                <br *ngIf="!gameHistory.descendentRankUsername[1]" />
+            </p>
+        </div>
+        <div class="column">
+            <p class="column-title">Joueur 3</p>
+            <p *ngFor="let gameHistory of gamesHistory">
+                {{ gameHistory.descendentRankUsername[2] }}
+                <br *ngIf="!gameHistory.descendentRankUsername[2]" />
+            </p>
+        </div>
+        <div class="column">
+            <p class="column-title">Joueur 4</p>
+            <p *ngFor="let gameHistory of gamesHistory">
+                {{ gameHistory.descendentRankUsername[3] }}
+                <br *ngIf="!gameHistory.descendentRankUsername[3]" />
+            </p>
+        </div>
+    </div> -->
+</div>

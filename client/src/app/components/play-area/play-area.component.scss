@@ -1,0 +1,27 @@
+canvas {
+    border: 2px solid white;
+}
+
+.wrapper {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    width: 640px;
+    height: 480px;
+}
+
+canvas {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+}
+
+.below {
+    z-index: 1;
+}
+
+.topFirstHint {
+    z-index: 2;
+}
+
+.topSecondHint {
+    z-index: 3;
+}

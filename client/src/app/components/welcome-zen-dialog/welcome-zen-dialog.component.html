@@ -1,0 +1,28 @@
+<main>
+    <h2>Bienvenue dans le Mode Zen</h2>
+    <p>Il est grand temps de relaxer. Respirez profondément, et commençons.</p>
+
+    <!-- Cheesy relaxation quote -->
+    <blockquote>
+        <p style="font-family: 'FancyFont', cursive">"{{ reallyDeepQuote }}" - {{ reallyDeepQuoteAuthor }}</p>
+    </blockquote>
+
+    <!-- Music Type Selection -->
+    <h3>Sélectionnez votre musique de relaxation</h3>
+    <div class="music-selection">
+        <div class="music-option" [class.selected]="musicType === musicTypes.Lofi" (click)="selectMusicType(musicTypes.Lofi)">
+            <p>Lofi</p>
+        </div>
+        <div class="music-option" [class.selected]="musicType === musicTypes.Classical" (click)="selectMusicType(musicTypes.Classical)">
+            <p>Classique</p>
+        </div>
+        <div class="music-option" [class.selected]="musicType === musicTypes.Jazz" (click)="selectMusicType(musicTypes.Jazz)">
+            <p>Jazz</p>
+        </div>
+        <div class="music-option" [class.selected]="musicType === musicTypes.Nature" (click)="selectMusicType(musicTypes.Nature)">
+            <p>Nature</p>
+        </div>
+    </div>
+
+    <button mat-raised-button (click)="closeDialog()" [disabled]="!musicType">Commencer</button>
+</main>

@@ -1,0 +1,108 @@
+.mat-app-background {
+    min-height: 100vh;
+    width: 100%;
+}
+
+#top .top-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Light Mode Styles */
+.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.light-mode .nav-bar {
+    background-color: #fff;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #303030;
+    color: #fff;
+}
+
+.dark-mode .nav-bar {
+    background-color: #424242;
+}
+
+.dark-mode #title {
+    color: #fff;
+}
+
+.relaxed-mode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.nav-bar {
+    background-color: #fff;
+}
+
+#top {
+    padding: 0.5%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+#title {
+    font-size: 2rem;
+    color: #333;
+    margin: auto;
+}
+
+#game-area {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+#game-info {
+    overflow-y: scroll;
+    margin: 20px;
+    padding: 10px;
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+#music-controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+#game-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-canvas {
+    display: flex;
+    flex-direction: row;
+}
+
+.canvas {
+    margin: 10px;
+}
+
+#top button {
+    margin: 0 10px;
+}
+
+.dark-mode #top button {
+    background-color: #424242;
+    color: #fff;
+}
+
+.light-mode #top button {
+    background-color: #fff;
+    color: #333;
+}

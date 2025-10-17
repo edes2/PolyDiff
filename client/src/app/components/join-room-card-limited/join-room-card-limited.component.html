@@ -1,0 +1,19 @@
+<div class="main">
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Partie de {{ owner.username }}</mat-panel-title>
+                <mat-panel-description> Joueurs en attentes {{ roomInfo.players.length }} /4 </mat-panel-description>
+                <div class="button-group">
+                    <button class="button" mat-raised-button color="primary" (click)="joinGame()">Rejoindre la partie</button>
+                </div>
+            </mat-expansion-panel-header>
+            <div class="classic">
+                <h1 class="scores-title">Joueurs en attente :</h1>
+                <div *ngFor="let player of roomInfo.players">
+                    <p>{{ player.username }}</p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

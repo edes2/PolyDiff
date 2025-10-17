@@ -1,0 +1,61 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#nav-bar {
+    padding: 1.2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#title {
+    font-size: 2.5rem;
+    text-shadow: 5px 5px 10px #9c27b0;
+    max-height: 100%;
+    padding-top: 0.7%;
+    padding-right: 0.7%;
+}
+.text-content {
+    color: #e096ec;
+    text-align: center;
+}
+
+#return-button {
+    font-size: large;
+    width: fit-content;
+    min-height: 50px;
+    min-width: 150px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+app-sidenav {
+    position: fixed;
+    top: 0; /* Adjust as needed */
+    left: 0; /* Adjust as needed */
+    height: 100vh; /* Full height of the viewport */
+    /* Add other styling properties like width, background, etc. */
+}
+
+app-chat-container {
+    position: fixed;
+    bottom: 0; /* Adjust as needed */
+    right: 0; /* Adjust as needed */
+    height: 100vh; /* Full height of the viewport */
+    /* Add other styling properties like width, background, etc. */
+}

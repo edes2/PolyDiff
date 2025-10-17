@@ -1,0 +1,162 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    background-color: #303030;
+}
+
+.logo {
+    width: 50%;
+    height: auto;
+}
+
+.connexion-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    align-items: center;
+    flex: 1;
+    background-color: #e6e6e6;
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    padding: 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: purple;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #651473;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+input {
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.form-field {
+    display: flex;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    color: black;
+    width: 100%;
+    margin: 10px;
+}
+
+.form label,
+.form input {
+    padding: 1rem;
+}
+
+.form label {
+    padding-inline: 1.25rem;
+}
+
+.error-message {
+    box-sizing: border-box;
+    position: absolute;
+    top: -15%;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+    border-radius: 5px;
+    background-color: #ffcccc;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.reset-message {
+    box-sizing: border-box;
+    position: absolute;
+    top: -15%;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+    border-radius: 5px;
+    background-color: #ffcccc;
+    color: green;
+    text-align: center;
+    font-weight: bold;
+}
+
+.forgot-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #303030;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.forgot-password a:hover {
+    color: #5ec491;
+}
+
+.disabled-link {
+    cursor: not-allowed;
+    font-weight: normal;
+    color: grey;
+}
+
+.tooltip-message {
+    cursor: not-allowed;
+    visibility: hidden;
+    width: auto;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.forgot-password:hover .tooltip-message {
+    visibility: visible;
+}

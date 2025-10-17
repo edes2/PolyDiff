@@ -1,0 +1,19 @@
+<app-sidenav> </app-sidenav>
+<main id="main" class="mat-app-background">
+    <mat-card id="nav-bar">
+        <button id="return-button" mat-raised-button color="primary" routerLink="/home" (click)="navigatePrevious()">Retour</button>
+    </mat-card>
+
+    <div *ngIf="isEmpty" id="message" class="text-content">
+        <p id="titre">Il n'y a aucune fiche. Veuillez créer une fiche.</p>
+        <button id="return-button" mat-raised-button color="primary" routerLink="/config/create">Créer une nouvelle fiche</button>
+    </div>
+
+    <ul id="game-list">
+        <button *ngIf="!isEmpty" id="sorting-button" mat-raised-button (click)="sortCards()">Trier par note</button>
+        <li *ngFor="let cardInfo of gameCardsInfo" class="game-card">
+            <app-create-room-card [cardId]="cardInfo.id"></app-create-room-card>
+        </li>
+    </ul>
+</main>
+<app-chat-container></app-chat-container>

@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@electron/packager": "^18.0.0"
+  }
+}

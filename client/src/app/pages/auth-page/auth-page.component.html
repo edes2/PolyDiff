@@ -1,0 +1,31 @@
+<main id="main" class="mat-app-background">
+    <div class="container">
+        <div class="logo-container">
+            <img class="logo" src="./assets/nemo.png" alt="Logo" />
+        </div>
+
+        <div class="connexion-container">
+            <form class="form login" (ngSubmit)="onSignInClick()">
+                <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+                <div class="reset-message" *ngIf="resetMessage">{{ resetMessage }}</div>
+
+                <div class="form-field">
+                    <label for="login-email"><mat-icon>person</mat-icon></label>
+                    <input type="text" name="email" class="form-input" [(ngModel)]="email" placeholder="Courriel" required />
+                </div>
+
+                <div class="form-field">
+                    <label for="login-password"><mat-icon>lock</mat-icon></label>
+                    <input type="password" name="password" class="form-input" [(ngModel)]="password" placeholder="Mot de passe" required />
+                </div>
+
+                <button class="button" [disabled]="!isSignInEnabled()" type="submit">Se connecter</button>
+                <button class="button" (click)="onSignUpClick()">Créer un compte</button>
+                <div class="forgot-password">
+                    <a (click)="isResetEnabled() && resetPassword()" [ngClass]="{ 'disabled-link': !isResetEnabled() }">Mot de passe oublié?</a>
+                    <span *ngIf="!isResetEnabled()" class="tooltip-message">Tapez un courriel pour réinitialiser</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
